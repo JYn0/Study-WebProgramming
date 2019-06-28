@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<style>
+	div{/* div 공통 */
+		border:1px solid black;
+	}
+	#div1 > h3{ /* div1밑에 h3 */
+		color:red;
+	}
+	#div2 > div > h3{ /* >이건 바로 밑에만 가능 / 이게 더 우선 */
+		color:blue;
+	}
+	/* #div2 h3{ 
+		color:yellow;
+	}
+	#div2 h3{
+		color:green;
+	}*/
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Selector</h1>
+<div id="div1">
+	<h3>Header3</h3>
+</div>
+
+<div id="div2">
+	<div>
+		<h3>Header3</h3>
+	</div>
+</div>
+</body>
+</html>

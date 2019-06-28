@@ -1,0 +1,15 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Quicksand&display=swap');
+
+body{text-align:center;}
+#div1 > h3{
+	text-align:center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 3em;
+	height: 100px;
+	line-height:100px;
+	border:1px solid red;
+	width: 100px;
+	display:inline;
+	margin:100px ;
+}

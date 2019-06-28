@@ -1,0 +1,36 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css?family=Athiti|Delius+Swash+Caps&display=swap');
+
+
+.t1{
+	margin:10px auto;
+	border:2px solid gray;
+	width:500px;
+	font-family: 'Athiti', sans-serif;
+}
+.t1 > thead > tr > th{
+	background: black;
+	color:#8D0108;
+}
+.t1 > tbody > tr:hover{/* > td > a */
+	color: #F4F489;
+	background-color: black;
+}
+td:first-child { 
+	text-align: center;
+}
+td:nth-child(2) { 
+	text-align: left;
+}
+td:nth-child(3) { 
+	text-align: center;
+}
+td:nth-child(4){
+	text-align: right;
+}
+tr:nth-child(2n){ /* row Â¦¼ö */
+	color:#AECDB0;
+}
+tr:nth-child(2n+1){ /* row È¦¼ö */
+	color:#8088F6;
+}

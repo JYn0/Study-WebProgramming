@@ -1,0 +1,49 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Quicksand&display=swap');
+
+h1{
+	font-family: 'Quicksand', sans-serif;
+	text-shadow: 3px 3px 3px #FF0000;/* 가로 세로 그림자의길이 색 */
+}
+h3{
+	text-align:center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 1.5em;
+	height: 200px;
+	line-height:200px;
+	border:1px solid red;
+}
+a{ /* a(click)의 밑줄을 없애겠다  */
+	text-decoration: none;
+	color:black;
+	line-height: 100px;/* inline에서 높이 넓힐때(여백이 커짐) */
+	border:1px solid black;
+}
+a:hover{ /* click에 커서를 두면 */
+	background:blue;
+	color:yellow;
+	font-size: 1.5em; /* 1.5배 */
+}
+input:focus{
+	background:pink;
+	border:1px solid black;
+}
+div > h3:nth-child(4) {
+	color:red;
+	font-family: 'Quicksand', sans-serif;
+}
+/* div > :not(.a) {
+	color:#81BEF7;
+	font-family: "Courier New",Times,serif;
+	/* OS폰트 사용하면 안된다, 웹폰트 사용하기!! */
+} */
+/* input:hover{
+	background: gray;
+	border:1px solid black;
+}
+h3:nth-child(2n){ 
+	color:red;
+}
+h3:nth-child(2n+1) {
+	color:blue;
+} */

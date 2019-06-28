@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Gaegu|Press+Start+2P|Righteous&display=swap" rel="stylesheet">
+<meta charset="EUC-KR">
+<style>
+/* Global CSS */
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+	color:black;	
+}
+
+ul,ol{
+	list-style: none;
+}
+
+header, section, footer{
+	margin:0 auto;
+}
+
+/* Header CSS */
+header{
+	width:800px;
+	height:200px;
+	background: white;
+	position: relative;
+}
+li > a:hover{
+	color: red;
+}
+header > #top_nav{
+	text-align: center;
+ 	position: absolute;
+	height: 30px;
+	width:300px;
+	right:0;
+	top:1px;
+	font-size:1em;
+	font-family: 'Architects Daughter', cursive;
+}
+header > hgroup{
+	font-family: 'Righteous', cursive;
+	height: 120px;
+	padding-top: 30px;
+	text-align: center;
+	font-size: 3em;
+}
+
+header > #main_nav{
+	margin:10px 100px 0 100px;
+	width:600px;
+	height:40px;
+	font-size: 1.3em;
+	font-family: 'Architects Daughter', cursive;
+}
+
+header > #top_nav > ul > li{
+	float:left;
+	margin:0 5px;/* 글자 간의 간격 띄우기 => li사이의 간격 */
+}
+header > #main_nav > ul{
+	text-align: center;
+	width: 600px;
+	height: 30px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	background-color: #F6F26E;
+}
+header > #main_nav > ul > li{
+	float:left;
+	margin:0 50px;
+}
+
+/* Section CSS */
+section{
+	width:800px;
+	height:500px;
+	background: gray;
+}
+#left_aside{
+	float:left;
+	width:150px;
+	height:500px;
+	background: #EDECF5;
+}
+
+.bt > a{
+	font-family: 'Press Start 2P', cursive;
+	font-weight: bold;
+	text-align: center;
+	line-height: 50px;
+	display:block;/* box안에 box가 들어감 */
+	
+	border: 5px #9AF830;
+	width:110px;
+	height:50px;
+	
+	background:#9AF830;
+	color:white;
+	border:5px solid #9AF830;
+	border-radius:30px;
+	
+	margin:20px auto;
+}
+.bt > a:hover{
+	border:5px solid #F6D4F3;
+	background:#F6D4F3;
+	color: white;
+}
+
+#center_aside{
+	float:left;
+	width:450px;
+	height:500px;
+	background: white;
+}
+img{
+	width:125px;
+	height:100px;
+	float: left;
+	margin: 10px;
+}
+#exp{
+	/* border:1px solid black; */
+	width:145px;
+	height:170px;
+	text-align: center;
+	float:left;
+	font-family: 'Gaegu', cursive;
+	font-size: 1.3em;
+}
+#out{
+	/* border:1px solid black; */
+	width:450px;
+	height:350px;
+}
+#d1, #d2, #d3{
+	width:125px;
+	height:100px;
+	float: left;
+	margin: 10px;
+}
+
+#right_aside{
+	float:left;
+	width:200px;
+	height:500px;
+	background: #D9E6F8;
+}
+#right_aside > img{
+	margin:5px 10px;
+	width:180px;
+	height:300px;
+}
+
+.t1{
+	margin:10px auto;
+	border:2px solid gray;
+	width:350px;
+	font-family: 'Architects Daughter', cursive;
+}
+.t1 > thead > tr > th{
+	background: black;
+	color:#8D0108;
+}
+.t1 > tbody > tr:hover{/* > td > a */
+	color: #F4F489;
+	background-color: black;
+}
+td:first-child { 
+	text-align: center;
+}
+td:nth-child(2) { 
+	text-align: left;
+}
+td:nth-child(3) { 
+	text-align: center;
+}
+
+tr:nth-child(2n){ /* row 짝수 */
+	color:#AECDB0;
+}
+tr:nth-child(2n+1){ /* row 홀수 */
+	color:#8088F6;
+}
+
+/* Footer CSS */
+footer{
+	width:800px;
+	height:50px;
+	background: black;
+}
+
+
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+	<nav id="top_nav">
+		<ul>
+			<li><a href="signin.html">LOGIN</a></li>
+			<li><a href="signup.html">REGISTER</a></li>
+			<li><a href="">ABOUT US</a></li>
+			<li><a href="">MAP</a></li>
+		</ul>
+	</nav>
+	
+	<hgroup><h1>S N S</h1></hgroup>
+	
+	<nav id="main_nav">
+		<ul>
+			<li><a href="">Kakao Talk</a></li>
+			<li><a href="">Instagram</a></li>
+			<li><a href="">FaceBook</a></li>
+		</ul>
+	</nav>
+</header>
+
+<section>
+	<aside id="left_aside">
+		<div class="bt">
+			<a href="https://www.naver.com/">Naver</a>
+			<a href="https://www.google.co.kr/">Google</a>
+			<a href="https://www.youtube.com/?gl=KR&hl=ko">Youtube</a>
+		</div>
+	</aside>
+	
+	<aside id="center_aside">
+		<div id="out">
+			<div id="exp">
+				<img src="kakaostore.png">
+				<p>타임특가!</p><p>카카오스토어</p>
+			</div>
+			<div id="exp">
+				<img src="github.png">
+				<p>이력서 도우미</p><p>Github</p>
+			</div>
+			<div id="exp">
+				<img src="m0.gif">
+				<p>어른이들의</p><p>BEST 소풍 용품</p>
+			</div>
+			<div id="exp">
+				<img src="suki.PNG"><p>수키</p>
+			</div>
+			<div id="exp">
+				<img src="akiya.PNG"><p>아키</p>
+			</div>
+		</div>
+		
+		<table class="t1">
+			<thead>
+				<tr><th class="c">NO</th><th>CONTENT</th><th>AUTHOR</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>1</td><td>Chicken</td><td>Muzi</td></tr>
+				<tr><td>2</td><td>Pizza</td><td>Con</td></tr>
+				<tr><td>3</td><td>Ade</td><td>Apeach</td></tr>
+			</tbody>
+		</table>
+	</aside>
+	
+	<aside id="right_aside">
+		<img src="bk.jpg" height=500 title="광고">
+	</aside>
+</section>
+<footer></footer>
+</body>
+</html>

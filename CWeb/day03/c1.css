@@ -1,0 +1,22 @@
+@charset "EUC-KR";
+
+ 	*{
+ 	border:3px solid black;
+ 	} 
+/* CSS Comments */
+	h1,h2{ /* h1이라는 elements에 style를 준다*/
+		color:red;
+		background:black;
+	}
+	#h1{
+		color:pink;
+		background:blue;
+	}
+	.cc{
+		color:red;
+		background:gray;
+	}
+	
+	input[type="text"]{/* input의 type="text"만 가져오고 싶을때 */
+		background:yellow;
+	}

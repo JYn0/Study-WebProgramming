@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<style>
+*{
+	margin:0;
+}
+body{
+	background:#DFE3E0;
+	/* margin:0; */
+}
+div{
+	width:500px;
+	height:300px;
+	border:1px solid black;
+	/* 바깥쪽 여백 */
+	/* margin-top: 50px;
+	margin-left: 50px;
+	margin-bottom: 50px; */
+	margin: 50px 0 100px 20px;/* 위 오른쪽 아래 왼쪽 */
+	/* 안쪽 여백 */
+	/* padding-top: 30px;
+	padding-left: 100px; */
+}
+div > p{/* 안쪽여백 주는 다른 방법 */
+	margin: 50px 50px 50px 30px;
+	/* 박스 기준으로 */
+	border-radius: 20px 20px 0 0;
+	background: #78F823;
+	box-shadow: 10px 10px 10px white;
+}
+p{
+	border:2px dashed green;
+	/* margin:0; */
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+<p>Paragraph</p>
+<div>
+	<p>Paragraph</p>
+</div>
+<p>Paragraph</p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css?family=Molengo|Press+Start+2P|Shadows+Into+Light+Two&display=swap');
+/* 버튼 */
+/* div CSS */
+
+.bt > a{
+	font-family: 'Press Start 2P', cursive;
+	font-weight: bold;
+	text-align: center;
+	line-height: 70px;
+	display:block;/* box안에 box가 들어감 */
+	font-size: 1.5em;
+	
+	/* margin: 50px; *//* 자기 중심의 margin 생성 */
+	border: 10px solid red;
+	width:150px;
+	height:70px;
+	
+	background:blue;
+	color:white;
+	border:15px solid red;
+	border-radius:30px;
+	box-shadow:5px 5px 5px black;
+	
+	margin:10px auto;
+}
+.bt > a:hover{
+	border:15px solid pink;
+	background:blue;
+	color:yellow;
+	
+}
