@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script>
+function login(f){
+	var c = confirm('Are You Login ...');
+	if(c == true){
+		f.method = 'GET';
+		f.action = 'a';
+		f.submit();
+		//<!-- a에 GET방식으로 날리겠다 -->
+	};
+};
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Form Test</h1>
+<form action="a" method="GET"><!-- a서버에 GET방식으로 서버에 전송할 것이다. -->
+ID <input type="text" name="nm"><!-- type은 text형, name은 서버 전송할 때 쓰임 --><br>
+PWD <input type="password" name="pwd" required pattern="[0-9]+[a-zA-Z]+[~!@\#$%<>^&*]"><br>
+<input type="reset" value="RESET">
+<input onclick="login(this.form);"
+type="button" value="LOGIN">
+</form>
+</body>
+</html>
+<!-- http://70.12.50.238/day02/a?nm=a&pwd=a
+	a서버에 nm과 pwd를 보냄 -->
