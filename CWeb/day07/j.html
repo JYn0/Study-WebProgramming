@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table, td, tr, th{
+	border:1px solid black;
+}
+table{
+	width:400px;
+	height:600px;
+}
+.calc>td>button{
+    width:100px;
+    height:50px;
+    border:1px solid #18beff;
+    
+}
+</style>
+
+<script>
+var output ='';
+var result=0;
+var fun = null;
+var a=null;
+var b='';
+ 
+var po = function(put){
+    var out = document.getElementById('ini');
+    output += put;    
+    out.value = output;
+    
+};
+var calc = function(){
+    result = eval(output);
+    var out = document.getElementById('out');        
+    out.value = result;
+    reset();
+};
+var reset = function(){
+    output='';
+    result=0;
+    fun=null;
+    a=null;
+    b=null;
+    var out = document.getElementById('ini');    
+    out.value = result;
+}
+
+</script>
+</head>
+<body>
+<div>  
+
+<table border = "2">
+<tbody>
+	<tr height="100px"><td colspan="4"> <input type="text" id="ini"><br> 
+		<input type="text" id="out"><br> </td></tr>
+	<tr onclick="reset();" ><td colspan="4">C</td></tr>
+	<tr><td onclick="po('+');">+</td><td onclick="po('-');">-</td><td onclick="po('*');">X</td><td onclick="po('/');">/</td></tr>
+	<tr><td onclick="po(1);"><span>1</span></td>
+		<td onclick="po(2);">2</td><td onclick="po(3);">3</td><td onclick="po(0);">0</td></tr>
+	<tr><td onclick="po(4);">4</td><td onclick="po(5);">5</td><td onclick="po(6);">6</td><td rowspan="2" onclick="calc();">=</td></tr>
+	<tr><td onclick="po(7);">7</td><td onclick="po(8);">8</td><td onclick="po(9);">9</td></tr>
+
+</tbody>
+</table>
+</div>
+</body>
+</html>

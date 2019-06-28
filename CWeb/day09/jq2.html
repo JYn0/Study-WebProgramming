@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style></style>
+<script>
+$(document).ready(function(){ //$()가 준비되면 ready()를 실행해라 
+	var txt = $('h1').text(); // h1을 가져오기
+	alert(txt); 
+	$('h1').text('-----'); // 뿌리기
+	$('#hh').html('<a href="">Clcik</a>'); // id 가져오기
+	$('.ch').text('Class');
+	$('input[type="text"]').css('background','gray');
+	$('input[name="pwd"]').css(
+		{'color':'red', 'background':'blue'} // JSON
+	);
+});
+</script>
+</head>
+<body>
+<h1>Header1</h1>
+<h1 id="hh">Header1</h1>
+<h1>Header1</h1>
+<h1 class="ch">Header1</h1>
+<input type="text" name="id"><br>
+<input type="password" name="pwd"><br>
+</body>
+</html>

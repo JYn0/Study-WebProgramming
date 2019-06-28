@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+input[type="text"]:focus{
+	background:pink;
+}
+</style>
+<script>
+function login(f){
+	var id = f.id.value;
+	var idd = document.getElementById('idd');
+	idd.innerHTML = '';
+	
+	var pwd = f.pwd.value;
+	var pwdd = document.getElementById('pwdd');
+	pwdd.innerHTML = '';
+	
+	var pwdc = f.pwdc.value;
+	var pwdcc = document.getElementById('pwdcc');
+	pwdcc.innerHTML = '';
+	
+	var hint = f.HINT.value;
+	var hintt = document.getElementById('hintt');
+	hintt.innerHTML = '';
+	
+	var hobby = f.h.value;
+	var hobbyy = document.getElementById('hobbyy');
+	hobbyy.innerHTML = '';
+	
+	var age = f.age.value;
+	var agee = document.getElementById('agee');
+	agee.innerHTML = '';
+	
+	
+	/* ID */
+	if(id == '' || id == null){
+		idd.innerHTML = 'ID is Mandatory field !';
+		idd.style.color='red';
+		f.id.focus();
+		return;
+	}
+	
+	/* PWD */
+	if(pwd == '' || pwd == null){
+		pwdd.innerHTML = 'PWD is Mandatory field !';
+		pwdd.style.color='red';
+		f.pwd.focus();
+		return;
+	}
+	if(pwd.length < 4){
+		alert('Input 4 character');
+		f.pwd.focus();
+		return;		
+	}
+	if(pwd != pwdc){
+		pwdcc.innerHTML='Check PWD (not equal)';
+		pwdcc.style.color='red';
+		return;
+	}else if(pwd == pwdc){
+		pwdcc.innerHTML = 'OK';
+		pwdcc.style.color='green';
+	}
+	
+	/* HINT */
+	if(hint == '0'){
+		hintt.innerHTML = 'Check Hint !';
+		hintt.style.color='red';
+		return;
+	}
+	
+	/* HOBBY */
+	if(hobby == ''){
+		hobbyy.innerHTML = 'Check Hobby !';
+		hobbyy.style.color='red';
+		return;
+	}
+	
+	/* AGE */
+	if(age == ''){
+		agee.innerHTML = 'AGE is Mandatory failed !';
+		agee.style.color='red';
+		return;
+	}
+	
+	
+	var c = confirm('Are you Login ?');
+	if(c == true){
+		f.submit();
+	}
+};
+</script>
+</head>
+<body>
+<form action="login" method="get">
+	ID<input type="text" name="id">&nbsp;<span id="idd"></span><br>
+	
+	PWD<input type="text" name="pwd" id="pwd"> &nbsp; <span id="pwdd"></span><br>
+	PWD<input type="text" name="pwdc" id="pwdc"> &nbsp; <span id="pwdcc"></span><br>
+	
+	HINT<select name="HINT">
+		<option value="0">--</option>
+		<option value="a">A</option>
+		<option value="b">B</option>
+		<option value="c">C</option>
+		<option value="d">D</option>
+	</select>&nbsp;<span id="hintt"></span><br>
+
+	HOBBY
+		TRAIN <input type="radio" name="h" value="t">
+		STUDY <input type="radio" name="h" value="s">
+		MUSIC <input type="radio" name="h" value="m">
+	&nbsp;<span id="hobbyy"></span><hr>
+
+	AGE<input type="text" name="age">&nbsp;<span id="agee"></span><br>
+
+	<input onclick="login(this.form);" type="button" value="login">
+</form>
+</body>
+</html>

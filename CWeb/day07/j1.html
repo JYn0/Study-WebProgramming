@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style></style>
+<script>
+var person = [ 
+	{id:"id01", name:"무지"},
+	{id:"id02", name:"콘"},
+	{id:"id03", name:"라이언"},
+	{id:"id04", name:"어피치"},
+	{id:"id05", name:"네오"}
+]
+function getData(){
+	var data = document.getElementById('data');
+	var result = '';
+	for(var i=0; i<person.length; i++){
+		result += '<h2>'+ person[i].id+" "+person[i].name + '</h2>';
+	};
+	data.innerHTML = result;
+
+	// table
+	result += '<table border="2">';
+	result += '<tbody>';
+	for(var i in person){ //var i=0; i<person.length; i++
+		result += '<tr>' 
+			+ '<td>' + person[i].id+'</td>'
+			+ '<td>' + person[i].name + '</td>' 
+			+ '</tr>';
+	};
+	result += '</table>';
+	result += '</tbody>';
+	data.innerHTML = result;
+};
+</script>
+</head>
+<body>
+<h1 onclick="getData();">FOR TEST</h1><!-- For TEst 누르면 getData함수 호출 -->
+<div id="data"></div><!-- data뿌리기 -->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style></style>
+<script>
+function add(){
+	// var id = document.myform.id.value; // ID 값 가져오기
+	var id = document.myform.study;
+	for(var i in id){
+		if(id[i].checked){
+			alert(id[i].value);
+		}
+	}
+};
+</script>
+</head>
+<body>
+<form name="myform">
+	ID<input type="text" name="id"><br>
+	STUDY<input type="checkbox" name="study" value="s">
+	MUSIC<input type="checkbox" name="study" value="m">
+	TRAINING<input type="checkbox" name="study" value="t"><br>
+	<input type="button" value="ADD" onclick="add();">
+</form>
+</body>
+</html>
