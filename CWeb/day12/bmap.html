@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c7e811d8922cbfabf72157a74ef36116"></script>
+
+
+<style>
+#map {
+	width: 500px;
+	height: 500px;
+	border: 2px solid red;
+}
+</style>
+<script>
+$(document).ready(function () {
+	var center = new daum.maps.LatLng(35.185938, 129.210729); // 경도 ,위도
+	var container = document.getElementById('map');
+	var options = {
+		center: center,
+		level: 5
+	};
+
+	var map = new daum.maps.Map(container, options);
+
+	$('#home').click(function () {
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center: center, // 지도의 중심좌표
+			level: 3 // 지도의 확대 레벨
+		};
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커이미지의 주소입니다    
+			imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+			imageOption = { offset: new kakao.maps.Point(20, 50) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+		// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+			markerPosition = center; // 마커가 표시될 위치입니다
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+			position: markerPosition,
+			image: markerImage // 마커이미지 설정 
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	});
+
+	$('#b').click(function(){
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+ 		mapOption = { 
+        	center: new kakao.maps.LatLng(37.300372, 127.009376), // 지도의 중심좌표
+        	level: 10 // 지도의 확대 레벨
+   		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+ 
+		// 마커를 표시할 위치와 title 객체 배열입니다 
+		var positions = [
+    	{
+        	title: 'Wiz', 
+       		latlng: new kakao.maps.LatLng(37.299749, 127.009728)
+   		},
+   		{
+        	title: 'Champions', 
+        	latlng: new kakao.maps.LatLng(35.168212, 126.889220)
+    	},
+   		{
+        	title: '잠실', 
+        	latlng: new kakao.maps.LatLng(37.512305, 127.071923)
+ 		},
+    	{
+       		title: '고척',
+    	    latlng: new kakao.maps.LatLng(37.498360, 126.867231)
+		},
+		{
+        	title: '문학', 
+        	latlng: new kakao.maps.LatLng(37.436855, 126.693303)
+ 		},
+		];
+
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; 
+		
+    
+		for (var i = 0; i < positions.length; i ++) {
+    
+    		// 마커 이미지의 이미지 크기 입니다
+   			var imageSize = new kakao.maps.Size(50, 50); 
+    
+  			// 마커 이미지를 생성합니다    
+  			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+    
+   			// 마커를 생성합니다
+    		var marker = new kakao.maps.Marker({
+     			map: map, // 마커를 표시할 지도
+        		position: positions[i].latlng, // 마커를 표시할 위치
+       			title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+       		 	image : markerImage // 마커 이미지 
+   			 });
+		}
+	});
+
+
+	$('#wiz').click(function () {
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center: new kakao.maps.LatLng(37.299760, 127.009744), // 지도의 중심좌표
+			level: 3 // 지도의 확대 레벨
+		};
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커이미지의 주소입니다    
+			imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
+			imageOption = { offset: new kakao.maps.Point(20, 50) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+		// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+			markerPosition = new kakao.maps.LatLng(37.299760, 127.009744); // 마커가 표시될 위치입니다
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+			position: markerPosition,
+			image: markerImage // 마커이미지 설정 
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	});
+
+});
+
+</script>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<button id="home">Home</button>
+<button id="wiz">Wiz Park</button>
+<button id="b">Baseball Park</button>
+
+</body>
+
+</html>

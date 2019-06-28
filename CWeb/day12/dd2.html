@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+div{
+	width:300px;
+	height:80px;
+	border:2px solid red;
+}
+img{
+	width:70px;
+}
+</style>
+<script>
+sessionStorage.cnt=0;
+
+function itemdrop(e){
+	var src = e.dataTransfer.getData('m');
+	console.log(src);
+	$('#item').append($('#'+src));
+};
+function itemleave(e){
+
+};
+function allowdrop(e){
+	e.preventDefault();
+};
+function cartdrop(e){
+	e.preventDefault();
+	//console.log(src);
+	var src = e.dataTransfer.getData('m'); // 현재 drag되고있는 이미지의 id를 가져온다
+	$('#cart').append($('#'+src)); // cart영역div에 #src(선택된) 이미지를 넣겠다
+	var cnt = 0;
+	if(sessionStorage.cnt == null || sessionStorage.cnt == 0){
+		sessionStorage.cnt = 1;
+		cnt++;
+	}else{
+		var cnt = ++sessionStorage.cnt;
+	};
+	$('h3').text(cnt);
+};
+function cartleave(e){
+
+};
+
+function imgdrag(e){
+	e.dataTransfer.effectAllowed = 'move';
+	e.dataTransfer.setData('m',e.target.id);
+};
+
+</script>
+</head>
+<body>
+
+<h1>ITEM</h1>
+
+<!-- ondrop:이 영역으로 뭔가가 들어온다, onleave:이 영역에서 나간다 -->
+<div id="item" ondrop="itemdrop(event)" ondragover="allowdrop(event)" ondragleave="itemleave(event)">
+<img src="suki.PNG" id="m1" draggable="true" ondragstart="imgdrag(event)">
+<img src="akiya.PNG" id="m2" draggable="true" ondragstart="imgdrag(event)">
+<img src="m00.png" id="m3" draggable="true" ondragstart="imgdrag(event)">
+<img src="kakaoryan.jpg" id="m4" draggable="true" ondragstart="imgdrag(event)">
+</div> 
+
+<h1>CART</h1>
+<h3></h3>
+<div id="cart" ondrop="cartdrop(event)" ondragover="allowdrop(event)" ondragleave="cartleave(event)"></div>
+
+</body>
+</html>

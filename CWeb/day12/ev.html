@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style></style>
+<script>
+$(document).ready(function(){
+	if(typeof(EventSource) !== 'undefined'){ // 브라우저가 서버 이벤트를 받을 수 있다
+		var app = new EventSource('test.jsp'); // test.jsp 서버 프로그램이 브라우저에 이벤트를 준다
+		app.onmessage = function(ev){ // 서버에서 이벤트가 발생이되면 데이터를 뿌려라
+			$('h3').text('ev.data'); // ev.data를 뿌려라
+		}
+	}else{
+		alert('Server Event Not Available')
+	}
+});
+</script>
+</head>
+<body>
+<h1>Event</h1>
+<h3></h3>
+</body>
+</html>

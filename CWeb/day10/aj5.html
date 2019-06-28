@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+div{
+	width:300px;
+	border:2px solid red;
+}
+</style>
+<script>
+/*
+[
+	{"rank":1,"keyword":"A","type":"up","cnt":10},
+	{"rank":1,"keyword":"B","type":"down","cnt":1},
+	{"rank":1,"keyword":"C","type":"down","cnt":1},
+	{"rank":1,"keyword":"D","type":"up","cnt":7},
+	{"rank":1,"keyword":"E","type":"up","cnt":50}
+]
+*/
+function display(data){ // 내려온 data를 화면에 뿌려줌
+	$('div').empty();
+	$(data).each(function(index,item){ // for문(each)
+		var str = '';
+		str += '<h3>';
+		str += item.rank+" "+item.keyword+" "+item.type+" "+item.cnt;
+		// if(item.type == 'UP'){
+		// 	str += '<h>'
+		// }
+		str += '</h3>';
+		$('div').append(str);
+	});
+};
+function getData(){
+	$.ajax({
+		url:'chart',
+		success:function(result){ // Jason으로 data가 내려옴 
+			//alert(result);
+			display(eval(result)); //String ->JavaScript Object
+		}
+	});
+};
+$(document).ready(function(){
+	getData();
+	setInterval(getData,3000); // 3초에 한번씩 호출하기
+});
+</script>
+</head>
+<body>
+
+<h1>Keyword Chart</h1>
+<div></div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+div{
+	width:300px;
+	height:80px;
+	border:2px solid red;
+}
+img{
+	width:70px;
+}
+</style>
+<script>
+function cartdrop(e){
+	e.preventDefault();
+	var src = e.dataTransfer.getData('p');
+	console.log(src+' '+e.target);
+	$(e.target).append($('#'+src));
+};
+function mydrop(e){
+	e.preventDefault();
+	var src = e.dataTransfer.getData('p');
+	console.log(src+' '+e.target);
+	$(e.target).append($('#'+src));
+	// e.target.appendChild(document.getElementById(src));
+};
+function allowdrop(e){
+	e.preventDefault();
+};
+function mydrag(e){
+	e.dataTransfer.effectAllowed = 'move';
+	e.dataTransfer.setData('p',e.target.id); // p라는 이름으로 e.targetid에 사진의 id를 저장
+};
+</script>
+</head>
+<body>
+<h2>Drag and Drop</h2>
+<h3>Item</h3>
+<div ondrop="mydrop(event)" ondragover="allowdrop(event)"> <!-- 들어오면, 걸치면 -->
+	<img src="suki.PNG" id="p1" draggable="true" ondragstart="mydrag(event)"><!-- drag가 시작이되면 mydrag이벤트발생 -->
+	<img src="akiya.PNG" id="p2" draggable="true" ondragstart="mydrag(event)">
+	<img src="m00.png" id="p3" draggable="true" ondragstart="mydrag(event)">
+	<img src="kakaoryan.jpg" id="p4" draggable="true" ondragstart="mydrag(event)">
+</div>
+
+<h3>Cart</h3>
+<div ondrop="cartdrop(event)" ondragover="allowdrop(event)">
+</div>
+</body>
+</html>

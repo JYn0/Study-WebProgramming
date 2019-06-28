@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?"></script>
+
+
+<style>
+#map{
+	width:300px;
+	height:300px;
+	border:2px solid red;
+}
+</style>
+<script>
+$(document).ready(function(){
+	var center = new google.maps.LatLng(35.185938, 129.210729); // 경도 ,위도
+	var map = new google.maps.Map(
+		document.querySelector('#map'),	
+		{
+		mapTypeId:google.maps.MapTypeId.ROADMAP,
+		zoom:13,
+		center:center
+	});
+
+
+	$('button').click(function(){
+		var center = new google.maps.LatLng(41.911209, 12.478990);
+		map.setCenter(center);
+	});
+
+	// HTML5 Geolocation API
+
+	// function success(p){
+	// 	var center = new google.maps.LatLng(p.coords.latitude, p.coords.longtitude);
+	// 	map.setCenter(center);
+	// };
+	// function error(){
+	// 	alert('Location Error');
+	// };
+	// var watch = window.navigator.geolocation.watchPosition(
+	// 	success,
+	// 	error,
+	// 	{
+	// 		enableHighAccuracy:true,
+	// 		timeout:10000,
+	// 		maximumAge:0
+	// 	}
+	// );
+
+});
+</script>
+</head>
+<body>
+<button>Italia</button>
+<div id="map"></div>
+
+</body>
+</html>

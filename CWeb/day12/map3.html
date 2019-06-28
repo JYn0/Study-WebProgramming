@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a4d263fb4df10ef3db92d8ee12e91a4"></script>
+
+	<style>
+
+	</style>
+	<script>
+
+		function Temp(n, d1, d2) {
+			this.title = n;
+			this.latlng = new kakao.maps.LatLng(d1, d2);
+		};
+		function parsing(data, lat, long) {
+			var ts = $(data).find('item');
+			var datas = [];
+
+
+			ts.each(function (index, item) {
+				var name = $(this).find('address').text();
+
+				var lat2 = Number($(this).find('latitude').text());
+				var long2 = Number($(this).find('longitude').text());
+
+				var obj = new Temp(name, lat2, long2)
+
+				datas.push(obj)
+
+			})
+
+			makemap(datas, lat, long);
+
+		};
+
+		function getDat(reason, lat, long) {
+			var url_1 = 'https://cors-anywhere.herokuapp.com/http://openapi.tago.go.kr/openapi/service/CarSharingInfoService/getCarZoneListByAddr?serviceKey=xd2YG1f1skZ9%2Bq7AEt31B3Sfgx4gPVQsdsv00y7NdpeueyrBOsF%2Bds3uxB96jbBn1k%2Bk3Haevsn%2BYVkOV6GsmA%3D%3D&pageNo=1&numOfRows=500&zoneAddr=';
+			if (reason == 1) {
+				var url_2 = '%EC%84%9C%EC%9A%B8';
+				// var url_2 ='서울.xml';
+			}
+			else {
+				var url_2 = '%EB%8C%80%EC%A0%84';
+				// var url_2 = '대전.xml';
+			}
+			$.ajax({
+				url: url_1+url_2,
+				success: function (data) {
+					parsing(data, lat, long);
+				},
+				error:function(){
+				},
+
+			});
+		};
+		function makemap(positions, lat, long) {
+			var center = new daum.maps.LatLng(lat, long);
+			var container = document.getElementById('map')
+			var options = {
+				center: center,
+				level: 8
+			};
+
+			var map = new daum.maps.Map(container, options);
+
+			var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+			for (var i = 0; i < positions.length; i++) {
+
+				// 마커 이미지의 이미지 크기 입니다
+				var imageSize = new kakao.maps.Size(24, 35);
+
+				// 마커 이미지를 생성합니다    
+				var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+					map: map, // 마커를 표시할 지도
+					position: positions[i].latlng, // 마커를 표시할 위치
+					title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+					image: markerImage // 마커 이미지 
+				});
+			}
+
+
+		}
+		
+
+		$(document).ready(function () {
+
+			getDat(1, 37.537065, 126.982150);
+			$('#dae').click(function () {
+			getDat(0, 36.335277, 127.383599);
+
+		});
+		$('#se').click(function () {
+			getDat(1, 37.537065, 126.982150);
+		})
+
+		})
+
+</script>
+</head>
+
+<body>
+	<button id="dae">대전</button>
+	<button id="se">서울</button>
+	<div id="map" style="width:1000px;height:1000px;"></div>
+</body>
+
+</html>

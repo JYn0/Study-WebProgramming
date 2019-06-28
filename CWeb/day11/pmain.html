@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+div{
+	width:300px;
+	border:1px solid yellow;	
+}
+</style>
+<script>
+function display(data){ // 내려온 data를 화면에 뿌려줌
+	$('div').empty();
+	$(data).each(function(index,item){ // for문(each)
+		var str = '';
+		str += '<h3>';
+		str += item.rank+" "+item.keyword+" "+item.type+" "+item.cnt;
+		str += '</h3>';
+		$('div').append(str);
+	});
+};
+function getData(){
+	$.ajax({ // 요청만 하는것
+		url:'list',
+		success:function(result){ // Jason으로 data가 내려옴 
+			//alert(result);
+			display(eval(result)); //String ->JavaScript Object
+		}
+	});
+};
+$(document).ready(function(){
+	getData();
+	setInterval(getData,3000); // 3초에 한번씩 호출하기
+});
+</script>
+</head>
+<body>
+<h1>MAIN Page</h1>
+</body>
+<h1>BEST List</h1>
+<div></div>
+</html>

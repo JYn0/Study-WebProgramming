@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<style></style>
+	<script>
+
+
+		function makeChart(data) {
+			var categories = [
+				'1학년', '2학년', '3학년', '4학년',
+				'5학년', '6학년'
+			];
+
+			Highcharts.chart('container', {
+				chart: {
+					type: 'bar'
+				},
+				title: {
+					text: '삼리초 학년별 남녀수'
+				},
+				subtitle: {
+					
+				},
+				xAxis: [{
+					categories: categories,
+					reversed: false,
+					labels: {
+						step: 1
+					}
+				}, { // mirror axis on right side
+					opposite: true,
+					reversed: false,
+					categories: categories,
+					linkedTo: 0,
+					labels: {
+						step: 1
+					}
+				}],
+				yAxis: {
+					title: {
+						text: null
+					},
+					labels: {
+						formatter: function () {
+							return Math.abs(this.value) + '명';
+						}
+					}
+				},
+
+				plotOptions: {
+					series: {
+						stacking: 'normal'
+					}
+				},
+
+				tooltip: {
+					formatter: function () {
+						return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+							'Population: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+					}
+				},
+
+				series: data
+			});
+
+		};
+		function Temp(n, d1) {
+			this.name = n;
+			this.data = d1;
+		}
+		function parsing(data) {
+
+			var datas = [];
+
+
+			var name1 = 'Male'
+			var name2 = 'Female'
+			var ts = $(data).find('#samla')
+			var m = [];
+			var fe = [];
+
+
+			ts.each(function (index, item) {
+				var mArr = $(this).find('GRD_MALE_CNT');
+				var feArr = $(this).find('GRD_FEMALE_CNT');
+
+				mArr.each(function (index, item) {
+					m.push((-1)*Number($(item).text()));
+				})
+				feArr.each(function (index, item) {
+					fe.push(Number($(item).text()));
+				});
+
+			});
+			var obj_m = new Temp(name1, m);
+			var obj_fe = new Temp(name2, fe);
+
+			datas.push(obj_m);
+			//alert(datas.push(obj_m));
+
+			datas.push(obj_fe);
+
+			makeChart(datas);
+		}
+
+		function getData() {
+			$.ajax({
+				url: 'student.xml',
+				success: function (data) {
+					parsing(data);
+				}
+			});
+
+		};
+		$(document).ready(function () {
+			getData();
+		});
+
+
+
+	</script>
+</head>
+
+<body>
+	<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+</body>
+
+</html>
